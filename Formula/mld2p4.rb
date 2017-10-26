@@ -8,7 +8,7 @@ class Mld2p4 < Formula
 
   head "https://github.com/sfilippone/mld2p4-2.git"
 
-  option "with-test", "Run build-time tests"
+  option "without-test", "Skip build-time tests (not recommended)"
 
   depends_on :fortran
   depends_on :mpi => [:cc, :f90, :recommended]
