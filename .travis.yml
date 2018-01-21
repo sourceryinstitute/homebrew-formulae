@@ -17,7 +17,7 @@ env:
 before_install:
   - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
       export PATH="~/.linuxbrew/bin:~/.linuxbrew/sbin:$PATH";
-      gem update --system
+      gem update --system;
       export HOME=/home/linuxbrew;
       export LINUXBREW=$HOME/.linuxbrew;
       sudo apt-get -qq update;
