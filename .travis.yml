@@ -1,4 +1,6 @@
 language: ruby
+rvm:
+  - 2.3
 
 matrix:
   include:
@@ -6,7 +8,7 @@ matrix:
       osx_image: xcode8.2
       rvm: system
     - os: linux
-      rvm: 2.0.0
+      rvm: 2.3
 
 env:
   global:
@@ -15,10 +17,10 @@ env:
 before_install:
   - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
       export PATH="~/.linuxbrew/bin:~/.linuxbrew/sbin:$PATH";
+      gem update --system
       export HOME=/home/linuxbrew;
       export LINUXBREW=$HOME/.linuxbrew;
       sudo apt-get -qq update;
-      sudo apt-get -qq install ruby || sudo apt-get -qq upgrade ruby;
       sudo mkdir $HOME;
       sudo chown "$USER:" $HOME;
       mkdir $LINUXBREW;
