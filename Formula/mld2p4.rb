@@ -10,8 +10,8 @@ class Mld2p4 < Formula
 
   option "without-test", "Skip build-time tests (not recommended)"
 
-  depends_on :fortran
-  depends_on :mpi => [:cc, :f90, :recommended]
+  depends_on "gcc"
+  depends_on "mpich" => :recommended
   depends_on "psblas"
   depends_on "openblas" => OS.mac? ? :optional : :recommended
   depends_on "veclibfort" if build.without?("openblas") && OS.mac?

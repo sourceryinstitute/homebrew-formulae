@@ -12,8 +12,8 @@ class Psblas < Formula
   option "without-test", "Skip build-time tests (not recommended)"
   option "with-long-ints", "Build with 64 bit integers for > 2GB index space"
 
-  depends_on :fortran
-  depends_on :mpi => [:cc, :f90, :recommended]
+  depends_on "gcc"
+  depends_on "mpich" => :recommended
   depends_on "openblas" => OS.mac? ? :optional : :recommended
   depends_on "veclibfort" if build.without?("openblas") && OS.mac?
   depends_on "metis" => :optional
@@ -36,7 +36,7 @@ class Psblas < Formula
     args << "--enable-long-integers" if build.with? "long-ints"
     system "./configure", *args
     system "make", "install"
-#    system "make", "check" if build.with? "test" # remove until Salvatore can fix for real
+    # system "make", "check" if build.with? "test" # remove until Salvatore can fix for real
   end
 
   test do
