@@ -18,6 +18,7 @@ before_install:
       export HOME=/home/linuxbrew;
       export LINUXBREW=$HOME/.linuxbrew;
       sudo apt-get -qq update;
+      sudo apt-get -qq install ruby || sudo apt-get -qq upgrade ruby;
       sudo mkdir $HOME;
       sudo chown "$USER:" $HOME;
       mkdir $LINUXBREW;
