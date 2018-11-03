@@ -1,31 +1,20 @@
-language: ruby
+language: c
 rvm:
   - 2.3
+
+cache: ccache
 
 matrix:
   include:
     - os: osx
       osx_image: xcode8.2
       rvm: system
-    - os: linux
-      rvm: 2.3
 
 env:
   global:
     - HOMEBREW_DEVELOPER=1
 
 before_install:
-  - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
-      export PATH="~/.linuxbrew/bin:~/.linuxbrew/sbin:$PATH";
-      gem update --system;
-      export HOME=/home/linuxbrew;
-      export LINUXBREW=$HOME/.linuxbrew;
-      sudo apt-get -qq update;
-      sudo mkdir $HOME;
-      sudo chown "$USER:" $HOME;
-      mkdir $LINUXBREW;
-      curl -L https://github.com/Linuxbrew/brew/tarball/master | tar xz -m --strip 1 -C $LINUXBREW;
-    fi
   - brew update || brew update
   - if [ -f ".git/shallow" ]; then travis_retry git fetch --unshallow; fi
   - mkdir -p $(brew --repo)/Library/Taps/${TRAVIS_REPO_SLUG%/*}
